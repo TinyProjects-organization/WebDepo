@@ -21,12 +21,10 @@ namespace WebDepo.Service
         {
             try
             {
-                var malKabul = new MalKabul
+                var malKabul = new MalKabulMas
                 {
                     CariKodu = cariKodu,
-                    DepoKodu = depoKodu,
                     NetsiseAtildiMi = false,
-                    Etiket = etiket,
                     OlusturulmaTarihi = DateTime.Now,
                     OlusturanKullaniciId = islemYapanKullaniciId,
                     IrsaliyeNo = irsaliyeNo,

@@ -4,23 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebDepo.Model
 {
-    [Table("TBLMalKabul")]
-    public class MalKabul
+    [Table("TBLMalKabulMas")]
+    public class MalKabulMas
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Etiket { get; set; }
-
-        public DateTime? Skt { get; set; }
-
-        public string PartiNo { get; set; } // Nullable string
-
-        [Required]
-        public int DepoKodu { get; set; }
 
         [Required]
         [StringLength(50)]

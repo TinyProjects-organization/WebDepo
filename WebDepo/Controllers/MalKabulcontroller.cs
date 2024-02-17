@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
 using WebDepo.Helper;
 using WebDepo.Model;
@@ -24,10 +25,11 @@ namespace WebDepo.Controllers
 
         [HttpPost("SipariseIstinadenMalKabul")]
         [SwaggerOperation(Summary = "SipariseIstinadenMalKabul")]
-        public async Task<ReturnType> SipariseIstinadenMalKabul(string cariKodu, DateTime irsaliyeTarihi, string irsaliyeNo, List<IrsaliyeSiparisEsleme> irsaliyeSiparisList, List<MalKabul> malKabul)
+        public async Task<ReturnType> SipariseIstinadenMalKabul(object data)
         {
             try
             {
+                List<MalKabulMas> malKabulMas = JsonConvert.DeserializeObject<List<MalKabulMas>>(jsonData);
                 //foreach (var item in malKabul)
                 //{
                 //    _etiketSevice.EtiketOlusturmaIslemi();

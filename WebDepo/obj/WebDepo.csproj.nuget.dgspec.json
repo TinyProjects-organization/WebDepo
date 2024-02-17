@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Techmax\\Desktop\\webDepo-main\\WebDepo\\WebDepo.csproj": {}
+    "C:\\Users\\Can\\Documents\\GitHub\\WebDepo\\WebDepo\\WebDepo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Techmax\\Desktop\\webDepo-main\\WebDepo\\WebDepo.csproj": {
+    "C:\\Users\\Can\\Documents\\GitHub\\WebDepo\\WebDepo\\WebDepo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Techmax\\Desktop\\webDepo-main\\WebDepo\\WebDepo.csproj",
+        "projectUniqueName": "C:\\Users\\Can\\Documents\\GitHub\\WebDepo\\WebDepo\\WebDepo.csproj",
         "projectName": "WebDepo",
-        "projectPath": "C:\\Users\\Techmax\\Desktop\\webDepo-main\\WebDepo\\WebDepo.csproj",
-        "packagesPath": "C:\\Users\\Techmax\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Techmax\\Desktop\\webDepo-main\\WebDepo\\obj\\",
+        "projectPath": "C:\\Users\\Can\\Documents\\GitHub\\WebDepo\\WebDepo\\WebDepo.csproj",
+        "packagesPath": "C:\\Users\\Can\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Can\\Documents\\GitHub\\WebDepo\\WebDepo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Techmax\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Can\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,6 +59,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
