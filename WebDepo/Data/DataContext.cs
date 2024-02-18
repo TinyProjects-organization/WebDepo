@@ -25,7 +25,8 @@ namespace WebDepo.Data
         public DbSet<EtiketGecmisiTra> EtiketGecmisiTraS { get; set; }
         public DbSet<IrsaliyeSiparisEsleme> IrsaliyeSiparisEslemeS { get; set; }
         public DbSet<KullaniciSirketEsleme> KullaniciSirketEslemeS { get; set; }
-        public DbSet<MalKabulMas> MalKabulS { get; set; }
+        public DbSet<MalKabulMas> MalKabulMasS { get; set; }
+        public DbSet<MalKabulTra> MalKabulTras { get; set; }
         public DbSet<OnayliDatDepoTanimlama> OnayliDatDepoTanimlamaS { get; set; }
         public DbSet<Raf> RafS { get; set; }
         public DbSet<Recete> ReceteS { get; set; }

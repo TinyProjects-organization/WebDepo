@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
+using WebDepo.GenelClass;
 using WebDepo.Helper;
 using WebDepo.Model;
 using WebDepo.Service;
@@ -15,12 +16,14 @@ namespace WebDepo.Controllers
         private readonly DataContext _context;
         private readonly EtiketSevice _etiketSevice;
         private readonly IrsaliyeSiparisEsleme _irsaliyeSiparisEsleme;
+        private readonly MalKabulMasService _malKabulMasService;
 
-        public MalKabulcontroller(DataContext context,EtiketSevice etiketSevice, IrsaliyeSiparisEsleme irsaliyeSiparisEsleme)
+        public MalKabulcontroller(DataContext context, EtiketSevice etiketSevice, IrsaliyeSiparisEsleme irsaliyeSiparisEsleme, MalKabulMasService malKabulMasService)
         {
             _context = context;
             _etiketSevice = etiketSevice;
             _irsaliyeSiparisEsleme = irsaliyeSiparisEsleme;
+            _malKabulMasService = malKabulMasService;
         }
 
         [HttpPost("SipariseIstinadenMalKabul")]
@@ -29,13 +32,24 @@ namespace WebDepo.Controllers
         {
             try
             {
-                List<MalKabulMas> malKabulMas = JsonConvert.DeserializeObject<List<MalKabulMas>>(jsonData);
-                //foreach (var item in malKabul)
-                //{
-                //    _etiketSevice.EtiketOlusturmaIslemi();
+                if (data == null)
+                {
+                    throw new ArgumentNullException(nameof(data), "Input data is null.");
+                }
 
-                //}
-                //_irsaliyeSiparisEsleme.
+                string jsonData = data.ToString();
+
+                if (string.IsNullOrWhiteSpace(jsonData))
+                {
+                    throw new ArgumentException("Input data is empty or whitespace.", nameof(data));
+                }
+                MalKabulMasClass malKabulList = JsonConvert.DeserializeObject<MalKabulMasClass>(jsonData);
+
+                ReturnType malKabulInsert = _malKabulMasService.MalKabulOlusturmaIslemi(malKabulList);
+                if (!Helper.Helper.ReturnValueControl(malKabulInsert))
+                {
+
+                }
 
                 ReturnType returnValue = new ReturnType
                 {

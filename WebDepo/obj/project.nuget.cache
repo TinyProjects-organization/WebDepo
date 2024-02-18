@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yxTrnB3F0QgC5s5cS3ZGg1vOitMaoETGtnTAlDLSXi27Yi7owDhSgpU+KIvf0Df1phtZ2dS5+1wc1j3jng5RUQ==",
+  "dgSpecHash": "qb1GQAzncgfan6utAQPrOYMmCLXSYKMqt5uVppvofXuh3WbOaDu+LZ8/jDpk5PES/m5FR9FzW9qT3oLuSVftXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Can\\Documents\\GitHub\\WebDepo\\WebDepo\\WebDepo.csproj",
+  "projectFilePath": "C:\\Users\\Can\\Documents\\GitHub\\webDepo\\WebDepo\\WebDepo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Can\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Can\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

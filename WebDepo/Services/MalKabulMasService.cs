@@ -6,35 +6,36 @@ using WebDepo.Helper;
 namespace WebDepo.Service
 {
 
-    public class MalKabulService
+    public class MalKabulMasService
     {
         private readonly DataContext _context;
 
-        public MalKabulService(DataContext context)
+        public MalKabulMasService(DataContext context)
         {
             _context = context;
         }
 
         #region Mal Kabul
 
-        public async Task<ReturnType> MalKabulOlusturmaIslemi(string etiket,string cariKodu, short depoKodu, int islemYapanKullaniciId, string irsaliyeNo, string sirketKodu)
+        public async Task<ReturnType> MalKabulOlusturmaIslemi(MalKabulMas malKabulMas)
+            //(string etiket,string cariKodu, short depoKodu, int islemYapanKullaniciId, string irsaliyeNo, string sirketKodu)
         {
             try
             {
-                var malKabul = new MalKabulMas
-                {
-                    CariKodu = cariKodu,
-                    NetsiseAtildiMi = false,
-                    OlusturulmaTarihi = DateTime.Now,
-                    OlusturanKullaniciId = islemYapanKullaniciId,
-                    IrsaliyeNo = irsaliyeNo,
-                    SirketKodu = sirketKodu
-                };
-                await _context.MalKabulS.AddAsync(malKabul);
+                //var malKabul = new MalKabulMas
+                //{
+                //    CariKodu = cariKodu,
+                //    NetsiseAtildiMi = false,
+                //    OlusturulmaTarihi = DateTime.Now,
+                //    OlusturanKullaniciId = islemYapanKullaniciId,
+                //    IrsaliyeNo = irsaliyeNo,
+                //    SirketKodu = sirketKodu
+                //};
+                await _context.MalKabulMasS.AddAsync(malKabulMas);
                 ReturnType returnValue = new ReturnType
                 {
                     Status = StatusCode.Success,
-                    Data = malKabul
+                    Data = malKabulMas
                 };
                 return returnValue;
             }
@@ -55,7 +56,7 @@ namespace WebDepo.Service
         {
             try
             {
-                var malKabuller = await _context.MalKabulS.ToListAsync();
+                var malKabuller = await _context.MalKabulMasS.ToListAsync();
                 ReturnType returnValue = new ReturnType
                 {
                     Status = StatusCode.Success,
@@ -80,7 +81,7 @@ namespace WebDepo.Service
         {
             try
             {
-                var malKabuller = await _context.MalKabulS.FindAsync(id);
+                var malKabuller = await _context.MalKabulMasS.FindAsync(id);
                 ReturnType returnValue = new ReturnType
                 {
                     Status = StatusCode.Success,

@@ -15,33 +15,38 @@ namespace WebDepo.Service
         }
 
         #region Etiket
-        public async Task<ReturnType> EtiketOlusturmaIslemi(string stokKodu, short depoKodu, int islemYapanKullaniciId, double miktar, string malKabulEtiketi, short gkk, string rafEtiketi, DateTime skt, string sirketKodu, string partiNo)
+        public async Task<ReturnType> EtiketOlusturmaIslemi(List<Etiket> etiketList)
+            //(string stokKodu, short depoKodu, int islemYapanKullaniciId, double miktar, string malKabulEtiketi, short gkk, string rafEtiketi, DateTime skt, string sirketKodu, string partiNo)
         {
             try
             {
-                string olusturulmusBarkod = Guid.NewGuid().ToString();
-                var barkod = new Etiket
+                foreach (var item in etiketList)
                 {
-                    EtiketNo = olusturulmusBarkod,
-                    DepodaMi = true,
-                    OlusturanKullaniciId = islemYapanKullaniciId,
-                    OlusturulmaTarihi = DateTime.Now,
-                    DepoKodu = depoKodu,
-                    MalKabulEtiketi = String.IsNullOrEmpty(malKabulEtiketi) ? olusturulmusBarkod : malKabulEtiketi,
-                    Gkk = gkk,
-                    Miktar = miktar,
-                    RafEtiketi = rafEtiketi,
-                    StokKodu = stokKodu,
-                    Skt = skt,
-                    SirketKodu = sirketKodu,
-                    PartiNo = partiNo,
-                    silindiMi = false,
-                };
-                await _context.BarkodS.AddAsync(barkod);
+                    string olusturulmusBarkod = Guid.NewGuid().ToString();
+                    item.EtiketNo = olusturulmusBarkod;
+                }
+                //var barkod = new Etiket
+                //{
+                //    EtiketNo = olusturulmusBarkod,
+                //    DepodaMi = true,
+                //    OlusturanKullaniciId = islemYapanKullaniciId,
+                //    OlusturulmaTarihi = DateTime.Now,
+                //    DepoKodu = depoKodu,
+                //    MalKabulEtiketi = String.IsNullOrEmpty(malKabulEtiketi) ? olusturulmusBarkod : malKabulEtiketi,
+                //    Gkk = gkk,
+                //    Miktar = miktar,
+                //    RafEtiketi = rafEtiketi,
+                //    StokKodu = stokKodu,
+                //    Skt = skt,
+                //    SirketKodu = sirketKodu,
+                //    PartiNo = partiNo,
+                //    silindiMi = false,
+                //};
+                await _context.BarkodS.AddRangeAsync(etiketList);
                 ReturnType returnValue = new ReturnType
                 {
                     Status = StatusCode.Success,
-                    Data = barkod
+                    Data = etiketList
                 };
                 return returnValue;
             }
