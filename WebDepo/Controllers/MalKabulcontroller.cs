@@ -30,45 +30,39 @@ namespace WebDepo.Controllers
         [SwaggerOperation(Summary = "SipariseIstinadenMalKabul")]
         public async Task<ReturnType> SipariseIstinadenMalKabul(object data)
         {
-            try
+             try
             {
-                if (data == null)
+                if (data is null || string.IsNullOrWhiteSpace(data?.ToString()))
                 {
-                    throw new ArgumentNullException(nameof(data), "Input data is null.");
+                    throw new ArgumentException("Input data is null or empty.", nameof(data));
+                }
+                MalKabulMasClass malKabulList = JsonConvert.DeserializeObject<MalKabulMasClass>(data?.ToString());
+                
+                MalKabulMas malKaulMas = new MalKabulMas();
+                ReturnType malKabulInsert = await _malKabulMasService.MalKabulOlusturmaIslemi(malKaulMas);
+                if (Helper.Helper.ReturnValueControl(malKabulInsert))
+                {
+                    throw new Exception(malKabulInsert.ExceptionMessage);
                 }
 
-                string jsonData = data.ToString();
+                //ReturnType etiketInsert = await _etiketSevice.EtiketOlusturmaIslemi() 
 
-                if (string.IsNullOrWhiteSpace(jsonData))
-                {
-                    throw new ArgumentException("Input data is empty or whitespace.", nameof(data));
-                }
-                MalKabulMasClass malKabulList = JsonConvert.DeserializeObject<MalKabulMasClass>(jsonData);
-
-                ReturnType malKabulInsert = _malKabulMasService.MalKabulOlusturmaIslemi(malKabulList);
-                if (!Helper.Helper.ReturnValueControl(malKabulInsert))
-                {
-
-                }
-
-                ReturnType returnValue = new ReturnType
+                await _context.SaveChangesAsync().ConfigureAwait(false);
+                return new ReturnType
                 {
                     Status = StatusCode.Success,
                 };
-                await _context.SaveChangesAsync();
-                return returnValue;
             }
             catch (Exception ex)
             {
-                ReturnType returnValue = new ReturnType
+                return new ReturnType
                 {
                     Status = StatusCode.Error,
-                    Message = "",
                     ExceptionMessage = ex.Message,
                     ClassName = "SipariseIstinadenMalKabul",
                 };
-                return returnValue;
             }
         }
+
     }
 }
